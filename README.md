@@ -1,6 +1,7 @@
 # AWS Instructions - for cs7380- Fall 2020
-(Special thanks to Matt Kijowski for setting up the AWS accounts)
-(Material modified from his git account)
+Special thanks to Matt Kijowski for:
+* setting up the AWS accounts
+* material modified from his github [account](https://github.com/mkijowski/aws-cf-templates/blob/master/COURSE-INSTRUCTIONS.md)
 
 ### Introduction to the Amazon Web Services (AWS) lab space
 The purpose of this document is to familiarize yourself with the lab space we will be
