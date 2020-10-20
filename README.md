@@ -1,4 +1,6 @@
-# AWS Instructions - for cs7380
+# AWS Instructions - for cs7380- Fall 2020
+(Special thanks to Matt Kijowski for setting up the AWS accounts)
+(Material modified from his git account)
 
 ### Introduction to the Amazon Web Services (AWS) lab space
 The purpose of this document is to familiarize yourself with the lab space we will be
@@ -77,7 +79,7 @@ a set of resources that will be created in your AWS account.  Cloud Formation li
 open in another AWS service called Cloud Formation (AWS CF).
 
 Make sure you are signed into the AWS Console (via AWS Educate), then perform the following:
-* Click on the Cloud Formation link provided to you for your course or assignment (if you are just testing use [this link](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=Ubuntu-template&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Ftemplates%2FUbuntu.yml))
+* Click on the Cloud Formation link provided to you [this link]( https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ceg7380&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Fcourse-templates%2Fceg7380.yml) for your course or assignment (if you are just testing use [this link](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=Ubuntu-template&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Ftemplates%2FUbuntu.yml))
 * select the SSH key you just created from the drop down menu
 * Keep the default IP address of `0.0.0.0/0`
 * Accept the rest of the defaults (keep clicking next/agree/create) to finalize creation of your lab space.
