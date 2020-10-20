@@ -38,7 +38,7 @@ perform the following:
 * [Sign in to AWS educate](https://www.awseducate.com/signin/SiteLogin)
   * Click the `My Classrooms` Button
   * Click the blue `Go to classroom` button for Cloud Computing
-  * Click the yellow COntinue button
+  * Click the yellow Continue button
   * Click the blue `AWS Console` button  
   
   This will launch the AWS console (may require two
