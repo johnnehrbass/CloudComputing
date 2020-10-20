@@ -116,3 +116,14 @@ MobaXterm perform the following actions:
 * SSH into your AWS server with the following (replace */path/to/private/key*
   and *ElasticIP* with your information):
   `ssh -i /path/to/private/key username@ElasticIP`
+  
+  ---
+  
+### Docker vs singularity on HPC systems
+HPC environments are typically multi-user systems where users should only have access to their own data; therefore, docker is often not allowed for security reasons.
+
+For all practical purposes, docker gives superuser privileges. It’s hard to give someone limited docker access. Sure there’s SELinux and the like, but docker just wasn’t designed to keep users out of each other’s stuff. Singularity effectively runs as the running user and doesn’t result in elevated access.
+
+Another is scheduling. Most clusters use schedulers such as slurm, and users submit jobs with CPU/memory/time requirements. The docker command is just an API client that talks to the docker daemon, so the resource requests and actual usages don’t match. Singularity runs container processes without a daemon. They just run as child processes.
+
+There are other concerns too, but these are the big ones. Docker is just better at running applications on VM or cloud infrastructure. Singularity is better for command line applications and accessing devices like GPUs or MPI hardware. Docker’s library is extensive. It is trivial to convert most docker libraries to singularity images (assuming it does not change network settings nor require processes that run as root); therefore, you can leverage the best of both technologies to build singularity images.
