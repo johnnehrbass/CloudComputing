@@ -93,7 +93,7 @@ Once you have created the AWS Cloud formation stack you can [return to the EC2 s
   template.  You will need to retrieve the Elastic IP of the Ubuntu instance by
   selecting it and looking at the information in the Description below.
 
-BTW-FYI the first template that had only 8GB or disk space. Please do no use it any longer. Terminate that instance. Then goto Cloud formations and delete it. Finally, click on the link above and creat this new instance.
+BTW-FYI the first template that had only 8GB or disk space. Please do no use it any longer. Terminate that instance. Then goto Cloud formations and delete it. Finally, click on the link above and create this as a new instance.
 
 ---
 
