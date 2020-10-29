@@ -93,7 +93,6 @@ Once you have created the AWS Cloud formation stack you can [return to the EC2 s
   template.  You will need to retrieve the Elastic IP of the Ubuntu instance by
   selecting it and looking at the information in the Description below.
 
-
 BTW -  FYI this was the first template that had only 8GB or disk space. Please do no use it any longer,
 [( old link )]( https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ceg7380&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Fcourse-templates%2Fceg7380.yml)
 ---
