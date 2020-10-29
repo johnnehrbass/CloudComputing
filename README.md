@@ -80,7 +80,7 @@ a set of resources that will be created in your AWS account.  Cloud Formation li
 open in another AWS service called Cloud Formation (AWS CF).
 
 Make sure you are signed into the AWS Console (via AWS Educate), then perform the following:
-* Click on the updated Cloud Formation link provided to you [( this link )]( https://github.com/mkijowski/aws-cf-templates/blob/master/course-templates/ceg7380.yml) for your course or assignment (if you are just testing use [this link](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=Ubuntu-template&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Ftemplates%2FUbuntu.yml))
+* Click on the updated Cloud Formation link provided to you [( this link )]( https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ceg7380&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Fcourse-templates%2Fceg7380.yml) for your course or assignment (if you are just testing use [this link](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=Ubuntu-template&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Ftemplates%2FUbuntu.yml))
 * select the SSH key you just created from the drop down menu
 * Keep the default IP address of `0.0.0.0/0`
 * Accept the rest of the defaults (keep clicking next/agree/create) to finalize creation of your lab space.
@@ -93,8 +93,7 @@ Once you have created the AWS Cloud formation stack you can [return to the EC2 s
   template.  You will need to retrieve the Elastic IP of the Ubuntu instance by
   selecting it and looking at the information in the Description below.
 
-BTW-FYI this was the first template that had only 8GB or disk space. Please do no use it any longer,
-[( old link )]( https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ceg7380&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Fcourse-templates%2Fceg7380.yml)
+BTW-FYI the first template that had only 8GB or disk space. Please do no use it any longer. Terminate that instance. Then goto Cloud formations and delete it. Finally, click on the link above and creat this new instance.
 
 ---
 
