@@ -1,4 +1,4 @@
-# AWS Instructions - for cs7380- Fall 2020
+# AWS Instructions - for cs7380- Fall 2021
 Special thanks to Matt Kijowski for:
 * setting up the AWS accounts
 * material modified from his github [account](https://github.com/mkijowski/aws-cf-templates/blob/master/COURSE-INSTRUCTIONS.md)
