@@ -121,7 +121,7 @@ MobaXterm perform the following actions:
 * SSH into your AWS server with the following (replace */path/to/private/key*
   and *ElasticIP* with your information):
   `ssh -i /path/to/private/key username@ElasticIP`
- * Please dont waste resources.... When you are done testing, Click teh drop down "Instance State" and select "Stop Instance"
+ * Please dont waste resources.... When you are done testing, Click the drop down "Instance State" and select "Stop Instance"
 
   
   ---
