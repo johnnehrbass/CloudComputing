@@ -1,127 +1,98 @@
-# AWS Instructions - for cs7380- Fall 2021
-Special thanks to Matt Kijowski for:
-* setting up the AWS accounts
-* material modified from his github [account](https://github.com/mkijowski/aws-cf-templates/blob/master/COURSE-INSTRUCTIONS.md)
+# AWS Instructions - for cs7380- Fall 2022
 
-### Introduction to the Amazon Web Services (AWS) lab space
-The purpose of this document is to familiarize yourself with the lab space we will be
-using for this course.  You should have received an email from `support@awseducate.com`
-regarding your AWS Educate account for this class.  We will be using AWS to
-create virtual environments for you to use in your assignments.
+- [Getting Started with AWS Academy](#Getting-Started-with-AWS-Academy)
+- [Connecting to an AWS environment](#Connecting-to-an-AWS-environment)
+- [Reconnecting to an AWS environment](#Reconnecting-to-an-AWS-environment)
+- [Notes](#Notes)
 
-### Objectives
-1. Complete the AWS Educate Registration
-2. Sign in to the AWS console via AWS Educate
-3. Create a SSH keypair in AWS
-4. Create a test environment via AWS CloudFormation link
-5. Install required software and make a connection to the AWS environment
+## Getting Started with AWS Academy
 
----
+1. Open email from AWS Academy to accept invite to course.
+   - Notify me on discord on a private channel if you did not recieve an email.
+2. You will be joined to a Canvas course called AWS Academy Learner Lab - Foundation Services
+   - If you are in multiple courses using AWS, you may need to get used to the "Dashboard" to spend funds in the correct course.
+3. Within the course, click **Modules**
+4. Click **Learner Lab**
+   - Read and Agree to the Terms and Conditions
+6. Click the **Start Lab** Play button on the middle right
+7. Wait. 2 - 3 minutes. You will see a console appear that you can interact with.
+   - This terminal is configured with AWS CLI access - Please DO NOT use this terminal but rather Proceed with next instructions.
+8. Click **AWS Details** (with info icon next to it). Click download PEM from the SSH key options
+   - You'll need this for Connecting to the AWS Environment (below)
+9. Click **AWS** which should have a green dot next to it located on the left
+   - This will take you to your AWS Console for your account. Now the fun begins.
+10. In a new tab, enter the following URL in the browser (or click link to open): <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ceg7380&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Fcourse-templates%2Fceg7380.yml" target="_blank">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ceg7380&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Fcourse-templates%2Fceg7380.yml</a>
 
-### Complete the AWS Educate Registration
-Note: this step is for first time students using AWS Educate only, returning students that used AWS Educate before can
-skip it.
+   - On the first menu, click Next
+   - On the second menu, under Parameters, under Key Name, select `vockey`
+   - Click Next
+   - On the third menu, select Next
+   - Scroll to the bottom and select Create Stack
+   - You will be redirected to a status page that says CREATE_IN_PROGRESS
 
-Using the link emailed to you from `support@awseducate.com`, register for an 
-AWS Educate account as a student of Wright State University.  Please **be sure to 
-enter a graduation date in the future**, if you are unsure of your expected graduation 
-date just enter a date 5 years from today.
+10. Once you have created the AWS Cloud formation stack you can [return to the EC2 service](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Home:).  
+    Here you should see additional resources have been created (not everything says 0 anymore)
+11. Click on [Running Instances](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:sort=instanceState)
+12. Our machine should now be created (or almost ready).
+13. Your machine will be assigned an Elastic IP address, which you can view by clicking the check mark next to the instance listing. This IP address is what we will use to SSH into the virtual environment.
 
-The last field in this registration is a **Promotional Code** field, ***NOT*** a zip 
-code.  Many browser autofill programs will enter your zip code here and will cause an error.  Leave this field blank.
+**WARNING**
+While exploring and discovery is an important part of this course, any additional resources you create in AWS have an associated charge. If resources besides those strictly asked for by this course stay running, you risk running out of funds for this course. This will hinder your ability to complete assignments on time.
 
-Confirm your account via email and sign in here: https://www.awseducate.com/signin/SiteLogin
+## Connecting to an AWS environment
 
----
+**You are now ready to make an SSH connection to your AWS server.**
 
-### Sign in to the AWS Console via AWS Educate
-Assuming you have registered for AWS Educate and have access to this class 
-perform the following:
+1. Open a terminal.
+2. Copy the AWS SSH key that was downloaded to your system to your home directory in your terminal
 
-* [Sign in to AWS educate](https://www.awseducate.com/signin/SiteLogin)
-  * Click the `My Classrooms` Button
-  * Click the blue `Go to classroom` button for Cloud Computing
-  * Click the yellow Continue button
-  * Click the blue `AWS Console` button  
-  
-  This will launch the AWS console (may require two
-  clicks if you were already signed in to AWS with your personal account)
-  
-  Your username in the top right should look something like this
-  `vocstartsoft/user236529=lastname.number@wright.edu`.
+   - Helpful commands: `cp, ls, man`
+   - The manual method: Create a file with a useful name (or the same name as the downloaded file) `sshKeyFor7380.pem`
+   - Open a text editor
+   - Copy and paste the contents of the key that was downloaded from AWS Educate into the file.
 
----
+3. Change the permissions on the key file in your directory
 
-### Create a SSH keypair in AWS
-You should be at the main AWS Console for your course.  If not follow the steps in the previous section.
-Before you can create any resources in AWS you will first need an SSH key pair to secure them and sign in
-once provisioned.
+   - Because private keys need to be protected, the key needs to be changed to readable by your user by using `chmod`
+   - `chmod 600 /path/to/private/key` - replace _/path/to/private/key_ with your information
+   - Resource on how to use [chmod](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/)
 
-* To create a SSH key pair via AWS for signing in to your systems
-  select the [EC2 service from the AWS console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Home:).
-  You can also click the dropdown services button on the top left side and select EC2.
-  In the center area you should see a list of all Resources you have
-  available (you will be returning here often).  Right now they should all be 0.
-* Click on [0 Key Pairs](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName)
-  From here you should see no existing SSH key pairs.  
-* Click on the `Create Key Pair` blue button.  This will create a 
-  public/private key pair, stores the public key in AWS, and downloads the
-  private key to your local machine.  
-* **Do not lose this private key.**  Doing so will prevent you from being
-  able to access any resources created with it.  If you do lose it simply delete it
-  from AWS and create a new one.
+4. SSH into your AWS server with the following command  
+   `ssh -i /path/to/private/key ubuntu@ElasticIP`  
+   Note: replace _/path/to/private/key_ and _ElasticIP_ with your information
+   - If your connection was refused, you may have forgotten to put the username `ubuntu` in front of your Elastic IP address
+5. You are now signed in to your AWS Educate system as the user `ubuntu`
 
----
+## Reconnecting to an AWS environment
 
-### Create a test environment via AWS CloudFormation link
-Once you have created your SSH key you are able to provision any of the resources
-provided via Cloud Formation links.  A Cloud Formation link is a template that describes
-a set of resources that will be created in your AWS account.  Cloud Formation links will 
-open in another AWS service called Cloud Formation (AWS CF).
+Every 4 hours, instances (virtual machines) on AWS will automatically power down. This is good - it saves funds and use of resources. However, every 4 hours you need to restart the timer OR **Start Lab** again.
 
-Make sure you are signed into the AWS Console (via AWS Educate), then perform the following:
-* Click on the updated Cloud Formation link provided to you [( this link )]( https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ceg7380&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Fcourse-templates%2Fceg7380.yml) for your course or assignment (if you are just testing use [this link](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=Ubuntu-template&templateURL=https:%2F%2Fwsu-cecs-cf-templates.s3.us-east-2.amazonaws.com%2Ftemplates%2FUbuntu.yml))
-* select the SSH key you just created from the drop down menu
-* Keep the default IP address of `0.0.0.0/0`
-* Accept the rest of the defaults (keep clicking next/agree/create) to finalize creation of your lab space.
+1. This link should return you to [Modules -> Learner Lab](https://awsacademy.instructure.com/courses/24167/modules/items/1982401)
+2. Click the **Start Lab** Play button on the middle right
+3. Wait. 2 - 3 minutes. You will see a console appear that you can interact with.
+4. Click **AWS** which should have a green dot next to it located on the left
+   - This will take you to your AWS Console for your account.
+   - The light next to **AWS** should now be **green**
+5. Be patient, but you should now be able to `ssh` in to your instance with your private key to the same IP as before
 
-Most resources should provision in approximately 5 minutes (Windows systems can take > 30 minutes).
-Once you have created the AWS Cloud formation stack you can [return to the EC2 service](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Home:).
-  Here you should see additional resources have been created. 
-* [Click on Running Instances](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:sort=instanceState)
-  to see information about the servers created as a part of the cloud formation
-  template.  You will need to retrieve the Elastic IP of the Ubuntu instance by
-  selecting it and looking at the information in the Description below.
+### Need to log in?
 
-BTW-FYI the first template that had only 8GB or disk space. Please do no use it any longer. Terminate that instance. Then goto Cloud formations and delete it. Finally, click on the link above and create this as a new instance.
+1. Log on to the [AWS Canvas portal](https://awsacademy.instructure.com/login/canvas)
+   - Opens new page: <a href="https://awsacademy.instructure.com/login/canvas" target="_blank">AWS Canvas portal</a>
+2. Within the course, click **Modules**
+3. Click **Learner Lab - Foundational Services**
+4. Click the **Start Lab** Play button on the middle right
+5. Wait. 2 - 3 minutes. You will see a console appear that you can interact with.
+6. Click **AWS** which should have a green dot next to it located on the left
+   - This will take you to your AWS Console for your account.
+   - The light next to **AWS** should now be **green**
+7. Be patient, but you should now be able to `ssh` in to your instance with your private key to the same IP as before
 
----
+## Notes
 
-###### Install required software for Windows
-We are going to be making many connections to Linux servers via SSH, some will
-even have graphical applications that we will be accessing locally.  To do this
-you will need an SSH client and local X server.  There are many options out
-there and you are free to use whichever one you want; however, we will only be
-supporting the following environment. If you have a linux system you do not need to do this step.
+- Sessions last 4 hours. Session time can be refreshed. Instances spin down after 4 hours
+- Budget cannot exceed $100 - account will vaporize - all resources created by account will be deleted
 
-* [Install Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-* Install Ubuntu 20.04 LTS from the Windows store
-* Launch Ubuntu 20.04 LTS Bash to finish configuring your account
-  (username/password)
-* [Install MobaXterm Home Edition](https://mobaxterm.mobatek.net/download.html)
-
----
-
-### Connecting to the AWS environment
-**You are now ready to make an SSH connection to your AWS server.**  Using
-MobaXterm perform the following actions:
-* Create/copy the AWS private SSH key to your home directory
-* Make the key only readable by your user (`chmod 600 /path/to/private/key`)
-* Obtain the username for the system from the instructions provided to you alongside the CF link (if you used the link provided in this document, the username is `ubuntu`)
-* SSH into your AWS server with the following (replace */path/to/private/key*
-  and *ElasticIP* with your information):
-  `ssh -i /path/to/private/key username@ElasticIP`
- * Please dont waste resources.... When you are done testing, Click the drop down "Instance State" and select "Stop Instance"
 
   
   ---
