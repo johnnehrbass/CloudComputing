@@ -1,4 +1,4 @@
-# AWS Instructions - for cs7380- Fall 2022
+# AWS Instructions - for cs7380- Fall 2023
 
 - [Getting Started with AWS Academy](#Getting-Started-with-AWS-Academy)
 - [Connecting to an AWS environment](#Connecting-to-an-AWS-environment)
@@ -27,11 +27,12 @@
    - On the second menu, under Parameters, under Key Name, select `vockey`
    - Click Next
    - On the third menu, select Next
-   - Scroll to the bottom and select Create Stack
+   - Scroll to the bottom and select Submit and then Create Stack 
    - You will be redirected to a status page that says CREATE_IN_PROGRESS
 
-10. Once you have created the AWS Cloud formation stack you can [return to the EC2 service](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Home:).  
+10. Once you have created the AWS Cloud formation stack you can [link to the EC2 service](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Home:).  
     Here you should see additional resources have been created (not everything says 0 anymore)
+    This may time quite some time to show up... be patient.
 11. Click on [Running Instances](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:sort=instanceState)
 12. Our machine should now be created (or almost ready).
 13. Your machine will be assigned an Elastic IP address, which you can view by clicking the check mark next to the instance listing. This IP address is what we will use to SSH into the virtual environment.
