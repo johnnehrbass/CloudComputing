@@ -1,4 +1,4 @@
-# AWS Instructions - for cs7380- Fall 2023
+# AWS Instructions - for cs7380- Fall 2024
 
 - [Getting Started with AWS Academy](#Getting-Started-with-AWS-Academy)
 - [Connecting to an AWS environment](#Connecting-to-an-AWS-environment)
