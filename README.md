@@ -93,7 +93,7 @@ Every 4 hours, instances (virtual machines) on AWS will automatically power down
 ## Notes
 
 - Sessions last 4 hours. Session time can be refreshed. Instances spin down after 4 hours
-- Budget cannot exceed $100 - account will vaporize - all resources created by account will be deleted
+- Budget cannot exceed $50 - account will vaporize - all resources created by account will be deleted
 
 
   
